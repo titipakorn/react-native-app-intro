@@ -337,7 +337,7 @@ export default class AppIntro extends Component {
     }
 
     return (
-      <View>
+      <View style={{flex:1}}>
         {androidPages}
         <Swiper
           loop={false}
