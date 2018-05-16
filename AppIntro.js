@@ -351,9 +351,17 @@ export default class AppIntro extends Component {
 
             this.props.onSlideChange(state.index, state.total);
           }}
-          onScroll={Animated.event(
-            [{ x: this.state.parallax }]
-          )}
+          onScroll={(e) => {
+
+                const currentScrollPos = e.nativeEvent.contentOffset.y
+                const sensitivity = 50
+
+                if (Math.abs(currentScrollPos - this.state.lastScrollPos) > sensitivity) {
+
+                            this.props.doSomething()
+                            this.setState({lastScrollPos: e.nativeEvent.contentOffset.y })
+                      }
+  } }
         >
           {pages}
         </Swiper>
